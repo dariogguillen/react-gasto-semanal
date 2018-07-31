@@ -1,48 +1,39 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
-class IngresarPresupuesto extends Component {
-  constructor(props) {
-    super(props)
+const IngresarPresupuesto = props => {
+  const presupuestoRef = React.createRef()
 
-    this.presupuestoRef = React.createRef()
-
-    this.crearPresupuesto = this.crearPresupuesto.bind(this)
-  }
-
-  crearPresupuesto (e) {
-    const { agregarPresupuesto } = this.props
+  const crearPresupuesto = e => {
     e.preventDefault()
-    agregarPresupuesto(this.presupuestoRef.current.value)
+    props.agregarPresupuesto(presupuestoRef.current.value)
   }
 
-  render() {
-    return (
-      <div>
-        <form onSubmit={this.crearPresupuesto}>
-          <h2>Ingresa Tu Presupuesto Semanal</h2>
-          <div className="campo">
-            <input
-              className="u-full-width"
-              type="number"
-              placeholder="Ej. 300"
-              min="0"
-              ref={this.presupuestoRef}
-            />
-          </div>
+  return (
+    <div>
+      <form onSubmit={crearPresupuesto}>
+        <h2>Ingresa Tu Presupuesto Semanal</h2>
+        <div className="campo">
           <input
-            className="button-primary u-full-width"
-            type="submit"
-            value="Agregar"
+            className="u-full-width"
+            type="number"
+            placeholder="Ej. 300"
+            min="0"
+            ref={presupuestoRef}
           />
-        </form>
-      </div>
-    )
-  }
+        </div>
+        <input
+          className="button-primary u-full-width"
+          type="submit"
+          value="Agregar"
+        />
+      </form>
+    </div>
+  )
 }
 
 IngresarPresupuesto.propTypes = {
-  agregarPresupuesto: PropTypes.func.isRequired,
+  agregarPresupuesto: PropTypes.func.isRequired
 }
 
 export default IngresarPresupuesto

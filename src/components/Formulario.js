@@ -1,64 +1,54 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
-class Formulario extends Component {
-  constructor(props) {
-    super(props)
+const Formulario = props => {
+  const nombreGastoRef = React.createRef()
+  const cantidadGastoRef = React.createRef()
 
-    this.nombreGastoRef = React.createRef()
-    this.cantidadGastoRef = React.createRef()
-
-    this.crearGasto = this.crearGasto.bind(this)
-  }
-
-  crearGasto(e) {
+  const crearGasto = e => {
     e.preventDefault()
-    const { agregarGasto } = this.props
+    const { agregarGasto } = props
     const gasto = {
-      nombreGasto: this.nombreGastoRef.current.value,
-      cantidadGasto: this.cantidadGastoRef.current.value
+      nombreGasto: nombreGastoRef.current.value,
+      cantidadGasto: cantidadGastoRef.current.value
     }
-
     agregarGasto(gasto)
-
     e.currentTarget.reset()
   }
 
-  render() {
-    return (
-      <form onSubmit={this.crearGasto}>
-        <h2>Agrega tus gastos aqui</h2>
-        <div className="campo">
-          <label>Nombre Gasto</label>
-          <input
-            className="u-full-width"
-            type="text"
-            placeholder="Ej. Transporte"
-            ref={this.nombreGastoRef}
-          />
-        </div>
-        <div className="campo">
-          <label>Cantidad</label>
-          <input
-            className="u-full-width"
-            type="number"
-            defaultValue="0"
-            min="1"
-            ref={this.cantidadGastoRef}
-          />
-        </div>
+  return (
+    <form onSubmit={crearGasto}>
+      <h2>Agrega tus gastos aqui</h2>
+      <div className="campo">
+        <label>Nombre Gasto</label>
         <input
-          className="button-primary u-full-width"
-          type="submit"
-          value="Agregar"
+          className="u-full-width"
+          type="text"
+          placeholder="Ej. Transporte"
+          ref={nombreGastoRef}
         />
-      </form>
-    )
-  }
+      </div>
+      <div className="campo">
+        <label>Cantidad</label>
+        <input
+          className="u-full-width"
+          type="number"
+          placeholder="Ej. 150"
+          min="0"
+          ref={cantidadGastoRef}
+        />
+      </div>
+      <input
+        className="button-primary u-full-width"
+        type="submit"
+        value="Agregar"
+      />
+    </form>
+  )
 }
 
 Formulario.propTypes = {
-  agregarGasto: PropTypes.func.isRequired,
+  agregarGasto: PropTypes.func.isRequired
 }
 
 export default Formulario

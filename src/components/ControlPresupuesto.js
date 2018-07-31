@@ -1,19 +1,17 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 import Presupuesto from './Presupuesto'
 import Restante from './Restante'
 
-class ControlPresupuesto extends Component {
-  render() {
-    const { presupuesto, restante } = this.props
-    return (
-      <div>
-        <Presupuesto presupuesto={presupuesto} />
-        <Restante presupuesto={presupuesto} restante={restante} />
-      </div>
-    )
-  }
+const ControlPresupuesto = props => {
+  const { presupuesto, restante } = props
+  return (
+    <div>
+      <Presupuesto presupuesto={presupuesto} />
+      <Restante presupuesto={presupuesto} restante={restante} />
+    </div>
+  )
 }
 
 ControlPresupuesto.propTypes = {
