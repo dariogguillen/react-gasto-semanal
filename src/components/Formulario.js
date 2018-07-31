@@ -14,7 +14,7 @@ class Formulario extends Component {
   crearGasto(e) {
     e.preventDefault()
     const { agregarGasto } = this.props
-    const gasto ={
+    const gasto = {
       nombreGasto: this.gastoRef.current.value,
       cantidadGasto: this.cantidadRef.current.value
     }
