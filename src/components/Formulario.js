@@ -5,8 +5,8 @@ class Formulario extends Component {
   constructor(props) {
     super(props)
 
-    this.gastoRef = React.createRef()
-    this.cantidadRef = React.createRef()
+    this.nombreGastoRef = React.createRef()
+    this.cantidadGastoRef = React.createRef()
 
     this.crearGasto = this.crearGasto.bind(this)
   }
@@ -15,8 +15,8 @@ class Formulario extends Component {
     e.preventDefault()
     const { agregarGasto } = this.props
     const gasto = {
-      nombreGasto: this.gastoRef.current.value,
-      cantidadGasto: this.cantidadRef.current.value
+      nombreGasto: this.nombreGastoRef.current.value,
+      cantidadGasto: this.cantidadGastoRef.current.value
     }
 
     agregarGasto(gasto)
@@ -34,16 +34,17 @@ class Formulario extends Component {
             className="u-full-width"
             type="text"
             placeholder="Ej. Transporte"
-            ref={this.gastoRef}
+            ref={this.nombreGastoRef}
           />
         </div>
         <div className="campo">
           <label>Cantidad</label>
           <input
             className="u-full-width"
-            type="text"
-            placeholder="Ej. 300"
-            ref={this.cantidadRef}
+            type="number"
+            defaultValue="0"
+            min="1"
+            ref={this.cantidadGastoRef}
           />
         </div>
         <input

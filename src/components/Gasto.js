@@ -1,19 +1,22 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class Gasto extends Component {
   render() {
+    const { nombreGasto, cantidadGasto } = this.props.itemGasto
     return (
-      <div>
-        Gasto
-        {console.log(this.props)}
-      </div>
-    );
+      <li className="gatos">
+        <p>
+          {nombreGasto}
+          <span className="gasto">${cantidadGasto}</span>
+        </p>
+      </li>
+    )
   }
 }
 
 Gasto.propTypes = {
-  itemGasto: PropTypes.object.isRequired,
-};
+  itemGasto: PropTypes.object.isRequired
+}
 
-export default Gasto;
+export default Gasto

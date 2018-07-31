@@ -24,8 +24,9 @@ class IngresarPresupuesto extends Component {
           <div className="campo">
             <input
               className="u-full-width"
-              type="text"
+              type="number"
               placeholder="Ej. 300"
+              min="0"
               ref={this.presupuestoRef}
             />
           </div>

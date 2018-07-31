@@ -1,8 +1,6 @@
 export const validarPresupuesto = presupuesto => {
-  let totalPresupuesto = parseInt(presupuesto, 10)
-
-  if (totalPresupuesto > 0) {
-    return totalPresupuesto
+  if (presupuesto > 0) {
+    return presupuesto
   } else {
     return ''
   }

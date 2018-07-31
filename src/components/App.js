@@ -30,10 +30,12 @@ class App extends Component {
   }
 
   agregarGasto(gasto) {
-    const gastos = { ...this.state.gastos }
+    let { gastos, restante } = this.state
     gastos[`gasto${Date.now()}`] = gasto
+    restante -= parseInt(gasto.cantidadGasto, 10)
     this.setState({
-      gastos
+      gastos,
+      restante
     })
   }
 
@@ -53,8 +55,8 @@ class App extends Component {
               <div className="one-half column">
                 <Listado listaGasto={gastos} />
                 <ControlPresupuesto
-                  presupuesto={presupuesto}
-                  restante={restante}
+                  presupuesto={Number(presupuesto)}
+                  restante={Number(restante)}
                 />
               </div>
             </div>
